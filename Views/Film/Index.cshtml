@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ActorSakilaReboot.Models.Film>
+@{
+    ViewBag.Title = "Films";
+}
+<h2>Films</h2>
+
+<table class="table">
+    <tr>
+        <th>Film ID</th>
+        <th>Title</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+        </tr>
+    }
+</table>

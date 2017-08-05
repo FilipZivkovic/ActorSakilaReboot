@@ -1,0 +1,39 @@
+﻿@model ActorSakilaReboot.Models.ActorIndexData
+
+@{
+    ViewBag.Title = "Actor details";
+}
+
+<h2>Actor's Films</h2>
+
+<table class="table">
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Films</th>
+    </tr>
+    <tr>
+
+        @foreach (var item in Model.Actors)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+        }
+        <td>
+            @foreach (var item in Model.Title)
+            {
+                @Html.DisplayFor(m => item)<br />
+
+            }
+        </td>
+    </tr>
+</table>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
