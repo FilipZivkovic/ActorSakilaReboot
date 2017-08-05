@@ -309,14 +309,18 @@ namespace ActorSakilaReboot.Data
                 entity.HasOne(d => d.Actor)
                     .WithMany(p => p.FilmActor)
                     .HasForeignKey(d => d.ActorId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_film_actor_actor");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("fk_film_actor_actor")
+                    .OnDelete(DeleteBehavior.Cascade);
+
 
                 entity.HasOne(d => d.Film)
                     .WithMany(p => p.FilmActor)
                     .HasForeignKey(d => d.FilmId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_film_actor_film");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("fk_film_actor_film")
+                    .OnDelete(DeleteBehavior.Cascade);
+
             });
 
             modelBuilder.Entity<FilmCategory>(entity =>

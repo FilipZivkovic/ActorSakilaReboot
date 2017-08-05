@@ -20,7 +20,6 @@ namespace ActorSakilaReboot.Controllers
             _context = context;
         }
 
-
         //GET: /Actor/
         public async Task<IActionResult> Index()
         {
@@ -109,9 +108,11 @@ namespace ActorSakilaReboot.Controllers
         // POST: /Actor/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(ushort id, [Bind("ActorId,FirstName,LastName")] Actor actor)
+        public ActionResult Delete(Actor actor)
         {
-            //Actor actorToDelete = _context.Actor.FirstOrDefault(_ => _.ActorId == id);
+
+            //Da bih uspio na ovaj način izbrisati actore morao sam ručno postaviti u mysql workbench
+            //ON DELETE CASCADE za tablicu film_actor
             _context.Entry(actor).State = EntityState.Deleted;
             _context.SaveChanges();
             return RedirectToAction("Index");
